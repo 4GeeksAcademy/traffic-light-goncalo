@@ -1,30 +1,30 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 
 const TrafficLight = () => {
-   
-    const [colorIndex, setColorIndex] = useState(0)
+  const [activeColor, setActiveColor] = useState("red");
 
-    const colors = ["red", "yellow", "green"];
-      
-    const handleClick = () => {
-        setInterval(() => {
-            setColorIndex((prevIndex) => (prevIndex + 1) % colors.length);
-        }, 3000);
-    };
+  const handleClick = (color) => {
+    setActiveColor(color);
+  };
 
-    return (
-        <>
-            <div className="traffic-light">
-                {colors.map((color, index) => (
-                    <div
-                        key={color}
-                        className={`light-${color} ${colorIndex === index ? "active" : ""}`}
-                    ></div>
-                ))}
-            </div>
-            <button className="start-button" onClick={handleClick}>Change Color</button> 
-        </>
-    )
-}
+  return (
+    <>
+      <div className="traffic-light">
+        <div
+          className={`light-red ${activeColor === "red" ? "active" : ""}`}
+          onClick={() => handleClick("red")}
+        ></div>
+        <div
+          className={`light-yellow ${activeColor === "yellow" ? "active" : ""}`}
+          onClick={() => handleClick("yellow")}
+        ></div>
+        <div
+          className={`light-green ${activeColor === "green" ? "active" : ""}`}
+          onClick={() => handleClick("green")}
+        ></div>
+      </div>
+    </>
+  );
+};
 
-export default TrafficLight
+export default TrafficLight;
