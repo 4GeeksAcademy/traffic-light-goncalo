@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const TrafficLight = () => {
-  const [activeColor, setActiveColor] = useState("red");
+  const [activeColor, setActiveColor] = useState("");
 
   const handleClick = (color) => {
     setActiveColor(color);
